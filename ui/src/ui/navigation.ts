@@ -2,6 +2,7 @@ import type { IconName } from "./icons.js";
 
 export const TAB_GROUPS = [
   { label: "Chat", tabs: ["chat"] },
+  { label: "AI Studio", tabs: ["ai-dashboard"] },
   {
     label: "Control",
     tabs: ["overview", "channels", "instances", "sessions", "usage", "cron"],
@@ -12,6 +13,7 @@ export const TAB_GROUPS = [
 
 export type Tab =
   | "agents"
+  | "ai-dashboard"
   | "overview"
   | "channels"
   | "instances"
@@ -27,6 +29,7 @@ export type Tab =
 
 const TAB_PATHS: Record<Tab, string> = {
   agents: "/agents",
+  "ai-dashboard": "/ai-dashboard",
   overview: "/overview",
   channels: "/channels",
   instances: "/instances",
@@ -126,6 +129,8 @@ export function iconForTab(tab: Tab): IconName {
   switch (tab) {
     case "agents":
       return "folder";
+    case "ai-dashboard":
+      return "monitor";
     case "chat":
       return "messageSquare";
     case "overview":
@@ -159,6 +164,8 @@ export function titleForTab(tab: Tab) {
   switch (tab) {
     case "agents":
       return "Agents";
+    case "ai-dashboard":
+      return "AI Dashboard";
     case "overview":
       return "Overview";
     case "channels":
@@ -192,6 +199,8 @@ export function subtitleForTab(tab: Tab) {
   switch (tab) {
     case "agents":
       return "Manage agent workspaces, tools, and identities.";
+    case "ai-dashboard":
+      return "Centralize models, prompts, knowledge, and automations.";
     case "overview":
       return "Gateway status, entry points, and a fast health read.";
     case "channels":
