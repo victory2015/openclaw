@@ -63,6 +63,7 @@ const debouncedLoadUsage = (state: UsageState) => {
   usageDateDebounceTimeout = window.setTimeout(() => void loadUsage(state), 400);
 };
 import { renderAgents } from "./views/agents.ts";
+import { renderAiDashboard } from "./views/ai-dashboard.ts";
 import { renderChannels } from "./views/channels.ts";
 import { renderChat } from "./views/chat.ts";
 import { renderConfig } from "./views/config.ts";
@@ -239,6 +240,8 @@ export function renderApp(state: AppViewState) {
               })
             : nothing
         }
+
+        ${state.tab === "ai-dashboard" ? renderAiDashboard({ basePath: state.basePath }) : nothing}
 
         ${
           state.tab === "channels"
